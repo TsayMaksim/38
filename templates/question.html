@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for k, v in questions.items() %}
+    <div>
+        <h3>{{ k }}</h3>
+        <p>{{ v.text }}</p>
+        <div>Ответы:</div>
+        {% for answer in v.answers %}
+        <p>{{ answer }}</p>
+        {% endfor %}
+        <form method="POST" action="/answer-question/{{ k }}">
+            <h4>Ответить на вопрос</h4><br>
+            <textarea name="answer"></textarea><br>
+            <button>Опубликовать</button>
+        </form>
+    </div>
+    {% endfor %}
+</body>
+</html>
